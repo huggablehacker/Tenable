@@ -1,0 +1,19 @@
+##Get Token
+
+curl -s -k -X POST -d '{"username":"USERNAME","password":"lamepass1234"}' -c sc_cookie.txt https://1.1.1.1/rest/token
+
+*This allowed me to get both a token and a cookie, which is output into the local directory and named sc_cookie.txt. I can can then grab the token from the output (not the cookie file and is ) and then proceed to place it in the other two curl commands (notated by 0000000000) and pass it as a header.
+ 
+
+##Get Scan ID's
+
+curl -s -k -X GET -H "X-SecurityCenter: 0000000000" -H 'Content-Type: application/json' -b sc_cookie.txt https://1.1.1.1/rest/scan?fields=name,description,status,finishTime | python -m json.tool >> scans-sc.txt
+
+*This allows me to get the Scan ID (which is notated in the next command by "000") which I will need for the next curl command, this is handy for automating a lot of things.
+ 
+
+##Launch Scan
+
+curl -s -k -X POST -H "X-SecurityCenter: 0000000000" -H 'Content-Type: application/json' -b sc_cookie.txt https://1.1.1.1/rest/scan/000/launch
+
+*Scan is Launched
