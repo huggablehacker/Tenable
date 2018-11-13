@@ -1,0 +1,5 @@
+#Get Scan ID's Outputting into local directory
+curl -H "X-ApiKeys: accessKey=00000; secretKey=00000" https://cloud.tenable.com/scans | python -m json.tool > Scan-IDs.txt
+ 
+# Replace ** with Scan ID, and launch from console
+curl -s -k -X POST -H "X-ApiKeys: accessKey=00000; secretKey=00000" -H 'Content-Type: application/json' -d '{"format": "nessus"}' https://cloud.tenable.com/scans/**/launch
