@@ -22,3 +22,4 @@ GOTO END
 :END
 
 REM you will need to download the proper 32 and 64 bit msi from https://www.tenable.com/downloads/nessus-agents and the edit this file for your needs. 
+REM used to link a Tenable IO agent to your instance of TIO. Tested up to Win 7 32/64 and Win 10 32/64.
